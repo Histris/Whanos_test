@@ -1,20 +1,29 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: whanos-c
-  labels:
-    app: whanos-c
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: whanos-c
-  template:
-    metadata:
-      labels:
-        app: whanos-c
-    spec:
-      containers:
-      - name: whanos-c
-        image: localhost:5000/whanos-c:latest
-        # imagePullPolicy: Never
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: whanos-c
+#   labels:
+#     app: whanos-c
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: whanos-c
+#   template:
+#     metadata:
+#       labels:
+#         app: whanos-c
+#     spec:
+#       containers:
+#       - name: whanos-c
+#         image: localhost:5000/whanos-c:latest
+#         # imagePullPolicy: Never
+deployment:
+  replicas: 3
+  resources:
+    limits:
+      memory: "128M"
+    requests:
+      memory: "64M"
+  ports:
+    - 3000
